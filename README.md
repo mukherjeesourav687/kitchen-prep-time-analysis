@@ -1,2 +1,26 @@
-# zomato_kitchen_prep_time-_analysis
-KPT Optimisation Project analysing delivery data to isolate kitchen inefficiencies by decomposing Delivery Duration into Travel Time and Estimated KPT. Includes rush detection, merchant reliability analysis, and a Power BI dashboard, focused on improving input signal quality.
+Zomato Kitchen Preparation Time Analysis
+Problem Statement
+
+Analyse delivery data to identify inefficiencies in Kitchen Preparation Time (KPT).
+
+Approach
+
+Delivery Duration = Travel Time + Estimated KPT
+
+Hour-wise rush detection
+
+Merchant reliability analysis (KPT standard deviation)
+
+Signal-level diagnostics
+
+Tools Used
+
+Excel
+
+Power BI
+
+CSV Dataset
+
+Key Outcome
+
+Identified preparation delays and merchant inconsistency to improve input signal quality without modifying prediction models.
