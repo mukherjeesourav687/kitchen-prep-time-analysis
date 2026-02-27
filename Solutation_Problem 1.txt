@@ -1,0 +1,71 @@
+Improving Kitchen Prep Time (KPT) Prediction through Signal Decomposition and Operational Signal Analysis
+Problem Understanding
+Kitchen Prep Time (KPT) is a key driver of ETA accuracy and rider assignment efficiency. Inaccurate estimation leads to early rider arrival, increased wait time, rider idle cost, fluctuating ETAs, and poor customer experience.
+In real-world systems, KPT is often derived from merchant-marked Food Order Ready (FOR) signals. However, these signals can be noisy due to operational behavior and hidden kitchen load.
+Using a simulated order-level delivery dataset, we aimed to decompose total delivery duration into operational components and isolate the kitchen preparation signal for deeper analysis.
+Rather than modifying the prediction model directly, this solution focuses on improving upstream signal clarity.
+
+Methodology: Signal Decomposition Approach
+Since explicit Food Ready timestamps were not available in the dataset, KPT was estimated by decomposing total delivery duration into:
+Total Delivery Duration = Estimated Travel Time + Estimated Kitchen Prep Time
+Travel time was approximated using:
+Delivery distance
+
+
+Traffic level
+
+
+Estimated_KPT = Delivery_Duration_Minutes – Estimated_Travel_Time
+This allowed isolation of the preparation component for operational analysis.
+
+Signal Reliability & Operational Insights
+1. Rush Detection (Kitchen Load Estimation)
+Using hour-of-day aggregation, we identified time windows where average Estimated_KPT increased significantly.
+This indicates:
+ • Kitchen congestion
+ • Order backlog pressure
+ • Potential underestimation of prep time during peak hours
+A Rush Index can be derived from hourly deviation patterns to dynamically adjust KPT during high-load periods.
+
+2. Merchant-Level Variability (Reliability Proxy)
+For each restaurant:
+ • Average Estimated_KPT
+ • Standard deviation of Estimated_KPT
+High variance suggests:
+ • Inconsistent preparation patterns
+ • Potential signal instability
+ • Operational inefficiency
+This can act as a Merchant Reliability Score proxy, where lower variance indicates more stable prep behavior.
+
+3. Traffic vs Prep Signal Separation
+By comparing:
+ • Average Travel Time by traffic level
+ • Average Estimated_KPT by traffic level
+We observed that traffic primarily impacts travel component, not prep component.
+This validates the decomposition approach and helps prevent mixing travel noise with kitchen signal.
+
+Scalable Implementation Concept
+In production systems:
+Signal Layer:
+ • Merchant-marked readiness timestamps
+ • Rider arrival timestamps
+ • Historical delay residuals
+Reliability Layer:
+ • Merchant stability scoring
+ • Rush multiplier adjustment
+Enriched Signal:
+ • Cleaned KPT fed into existing prediction model
+This preserves the current modeling architecture while improving input fidelity.
+
+Expected Impact
+• Reduced rider wait time
+ • Improved ETA accuracy (P50 / P90)
+ • Lower idle rider cost
+ • Better alignment of dispatch timing
+Even small improvements in prep-time accuracy can significantly improve operational efficiency at scale.
+
+Conclusion
+This solution demonstrates how decomposing delivery duration into travel and preparation components enables signal-level improvement without changing the core model.
+By identifying rush patterns and merchant variability, we improve upstream signal reliability — leading to better KPT estimation, improved rider assignment, and enhanced ETA stability.
+
+

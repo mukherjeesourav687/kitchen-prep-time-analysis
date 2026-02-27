@@ -1,0 +1,30 @@
+Improving Kitchen Prep Time (KPT) Prediction to Optimize Rider Assignment and Customer ETA at Zomato 
+Context 
+Zomato operates a large-scale food delivery ecosystem where delivery time accuracy is critical to customer experience, rider efficiency, and platform costs. A key component of delivery ETA is Kitchen Prep Time (KPT) — the time taken by a restaurant to prepare an order after it is confirmed. 
+Accurate KPT prediction enables better rider assignment, reduces idle waiting at restaurants, and helps set reliable expectations for customers. Given Zomato’s scale (300K+ merchants), even small improvements in KPT accuracy can have significant operational impact. 
+Business Challenge 
+Currently, KPT prediction models are primarily trained using Food Ready signals marked by merchants on the Zomato Merchant Experience (Mx) app. However, these signals are not always a true reflection of when food is actually ready. 
+Key limitations of current input signals include: 
+Rider-influenced FOR (Food Order Ready) marking: Merchants sometimes mark food as ready when the rider arrives, not when preparation is completed 
+No visibility into kitchen-wide rush: The system only observes Zomato orders, while in-store dining and competitor orders also contribute to kitchen load 
+Human and operational bias: Manual marking behavior varies significantly across merchants and time periods 
+These limitations introduce noise and bias into KPT labels, leading to inaccurate predictions, early rider arrivals, increased waiting time, and fluctuating ETAs for customers. 
+
+Problem Statement
+How can Zomato improve the accuracy of Kitchen Prep Time (KPT) prediction by strengthening and enriching input signals beyond merchant-marked FOR, while ensuring solutions are scalable across hundreds of thousands of merchants? 
+
+Key Deliverables 
+Important guidance: Participants should assume that existing KPT prediction models are largely fixed and that model changes alone are not sufficient. While model improvements may be proposed if strongly justified, the primary focus should be on improving input signals, data quality, system design, merchant workflows, or hardware-assisted instrumentation that can significantly enhance KPT prediction. 
+Participants are expected to propose solutions that: 
+Improve the accuracy and reliability of input signals feeding the KPT model 
+Reduce bias introduced by merchant-marked Food Ready (FOR) events
+Capture kitchen rush and load beyond Zomato-only orders 
+Are feasible and scalable across Zomato’s merchant base 
+Purely model-centric solutions without signal or system-level improvements will be considered insufficient. 
+
+Success Metrics 
+● Average rider wait time at pickup 
+● ETA prediction error (P50 / P90) 
+● Order delay and cancellation rates 
+● Rider idle time
+
