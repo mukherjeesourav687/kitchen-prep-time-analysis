@@ -1,3 +1,5 @@
+![Dashboard Preview](dashboard_preview.png)
+
 Zomato Kitchen Preparation Time Analysis
 Problem Statement
 
